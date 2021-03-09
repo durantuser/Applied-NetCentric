@@ -1,0 +1,51 @@
+// A sample cpp file showing how to add a user to the system.
+// 3/09/2021, by Ming-Shan Su
+// addDeleteUserSample.cpp or addDeleteUserSample.cpp.txt
+//To compile: g++ filename.cpp     or g++ filename.cpp -o filename.exe
+//To execute: ./a.out              or ./filename.exe
+
+#include <iostream>
+#include <cstdlib>
+#include <string>
+#include <sstream>
+using namespace std;
+
+int main()
+{
+   cout << "Hello World" << endl;
+   //system("mkdir user1"); //$ mkdir user1
+
+   string name, userpassword, anyCommand="";
+  
+   //add code to open a file
+   
+   for(int i = 0; i < 1; i++)
+   {
+      //add code to read a user from the users.txt file
+
+      stringstream temp;
+      temp << i;
+      name = "user" + temp.str(); //user1, user2, ...
+
+      //$ useradd johndoe vs. $ userdel johndoe
+      anyCommand = "useradd " + name;
+
+      cout << anyCommand << endl;
+      //system(anyCommand.c_str());
+
+      //setup the password for a user
+      anyCommand = "";
+      userpassword = "sosu-2014";
+
+      //$ echo john:sosu-2014 | chpasswd
+      //sample command, system("echo john:sosu-2014 | chpasswd");
+      anyCommand = "echo " + name + ":" + userpassword + " | chpasswd";
+      cout << anyCommand << endl;
+      //system(anyCommand.c_str());
+   }
+
+   //add code to close the users.txt file
+   cout << "Job Done!" << endl;
+   
+   return 0;
+}
